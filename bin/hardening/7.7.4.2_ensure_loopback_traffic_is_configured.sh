@@ -18,12 +18,12 @@ HARDENING_LEVEL=2
 INPUT_ACCEPT=1
 OUTPUT_ACCEPT=1
 INPUT_DENY=1
-IP4VERSION="IPS4"
+IP4VERSION=$(which iptables)
 		
 # This function will be called if the script status is on enabled / audit mode
 audit () {
 	# Check the loopback interface to accept INPUT traffic.
-	#ensure_lo_traffic_input_is_accept "$IP4VERSION"
+	ensure_lo_traffic_input_is_accept "$IP4VERSION"
 	if [ $FNRET = 0 ]; then
 		INPUT_ACCEPT=0
 		info "Iptables loopback traffic INPUT has configured!"
@@ -32,7 +32,7 @@ audit () {
 		info "Iptables: loopback traffic INPUT is not configured!"
 	fi 
 	# Check the loopback interface to accept OUTPUT traffic.
-	#ensure_lo_traffic_output_is_accept "$IP4VERSION"
+	ensure_lo_traffic_output_is_accept "$IP4VERSION"
 	if [ $FNRET = 0 ]; then
 		OUTPUT_ACCEPT=0
 		info "Iptables loopback traffic OUTPUT has configured!"
@@ -41,7 +41,7 @@ audit () {
 		info "Iptables: loopback traffic OUTPUT is not configured!"
 	fi 
 	# all other interfaces to deny traffic to the loopback network.
-	#ensure_lo_traffic_other_if_input_is_deny "$IP4VERSION"
+	ensure_lo_traffic_other_if_input_is_deny "$IP4VERSION"
 	if [ $FNRET = 0 ]; then
 		INPUT_DENY=0
 		info "Iptables loopback traffic INPUT deny from other interfaces has configured!"

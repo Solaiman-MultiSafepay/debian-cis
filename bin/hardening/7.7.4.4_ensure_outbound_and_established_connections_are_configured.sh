@@ -19,7 +19,7 @@ RET_VALUE1=1
 RET_VALUE2=1
 
 PROTOCOL_LIST="tcp udp icmp"
-IP4VERSION="IPS4"
+IP4VERSION=$(which iptables)
 
 # This function will be called if the script status is on enabled / audit mode
 audit () {
