@@ -36,7 +36,7 @@ audit () {
 		IPV4_RET=0
 	fi
 	# ipv6
-	#check_ipv6_is_enable
+	check_ipv6_is_enable "net.ipv6"
 	IPV6_ISENABLE=$FNRET
 	if [ $IPV6_ISENABLE = 0 ]; then 
     	if [ $(${IPS6} -S | grep -E "\-m.*limit" | grep -Ec "\-\-limit-burst") -eq 0 ]; then
