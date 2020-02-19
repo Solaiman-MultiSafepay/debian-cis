@@ -19,7 +19,7 @@ GROUP='adm'
 
 # This function will be called if the script status is on enabled / audit mode
 audit () {
-    FILES=$(grep "file(" $SYSLOG_BASEDIR/syslog-ng.conf | grep '"' | cut -d'"' -f 2)
+    FILES=$(grep "file(" $SYSLOG_BASEDIR/rsyslog.conf | grep '"' | cut -d'"' -f 2)
     for FILE in $FILES; do
         does_file_exist $FILE
         if [ $FNRET != 0 ]; then
@@ -70,7 +70,7 @@ apply () {
 create_config() {
     cat <<EOF
 status=disabled
-SYSLOG_BASEDIR='/etc/syslog-ng'
+SYSLOG_BASEDIR='/etc'
 EOF
 }
 

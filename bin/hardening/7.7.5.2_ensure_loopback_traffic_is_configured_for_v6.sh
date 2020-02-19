@@ -23,7 +23,7 @@ IPV6_ENABLE=1
 
 # This function will be called if the script status is on enabled / audit mode
 audit () {
-	check_ipv6_is_enable
+	#check_ipv6_is_enable
 	IPV6_ENABLE=$FNRET
 	if [ $IPV6_ENABLE -eq 0 ]; then
 		# Check the loopback interface to accept INPUT traffic.
@@ -45,7 +45,7 @@ audit () {
 			info "Ip6tables: loopback traffic OUTPUT is not configured!"
 		fi 
 		# all other interfaces to deny traffic to the loopback network.
-		ensure_lo_traffic_other_if_input_is_deny $IP6VERSION
+		#ensure_lo_traffic_other_if_input_is_deny $IP6VERSION
 		if [ $FNRET = 0 ]; then
 			INPUT_DENY=0
 			info "Ip6tables loopback traffic INPUT deny from other interfaces has configured!"

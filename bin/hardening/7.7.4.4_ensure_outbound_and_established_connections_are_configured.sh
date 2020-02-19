@@ -26,7 +26,7 @@ audit () {
 	for protocol in $PROTOCOL_LIST
 	do
 		# Check INPUT with ESTABLISHED is config
-		check_input_with_established_is_accept "${protocol}" "$IP4VERSION"
+		#check_input_with_established_is_accept "${protocol}" "$IP4VERSION"
 		if [ $FNRET = 0 ]; then 
 			RET_VALUE1=0
 			info "Portocol $protocol INPUT is conf"
@@ -35,7 +35,7 @@ audit () {
 			info "Portocol $protocol INPUT is not conf"
 		fi
 		# Check outbound is config
-		check_outbound_connect_is_accept "${protocol}" "$IP4VERSION"
+		#check_outbound_connect_is_accept "${protocol}" "$IP4VERSION"
 		if [ $FNRET = 0 ]; then 
 			RET_VALUE2=0
 			info "Portocol $protocol outbound is conf"

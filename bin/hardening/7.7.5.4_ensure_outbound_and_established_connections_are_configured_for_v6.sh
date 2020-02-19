@@ -24,7 +24,7 @@ RET_VALUE2=1
 
 # This function will be called if the script status is on enabled / audit mode
 audit () {
-	check_ipv6_is_enable
+	#check_ipv6_is_enable
 	IPV6_ENABLE=$FNRET
 	if [ $IPV6_ENABLE -eq 0 ]; then
 		for protocol in $PROTOCOL_LIST
