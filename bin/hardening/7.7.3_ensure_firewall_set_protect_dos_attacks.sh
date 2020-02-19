@@ -35,18 +35,6 @@ audit () {
 		info "Iptables has set rules for protect DOS attacks!"
 		IPV4_RET=0
 	fi
-	# ipv6
-	check_ipv6_is_enable "net.ipv6"
-	IPV6_ISENABLE=$FNRET
-	if [ $IPV6_ISENABLE = 0 ]; then 
-    	if [ $(${IPS6} -S | grep -E "\-m.*limit" | grep -Ec "\-\-limit-burst") -eq 0 ]; then
-			info "Ip6tables is not set rules of protect DOS attacks!"
-			IPV6_RET=1
-		else
-			info "Ip6tables has set rules for protect DOS attacks!"
-			IPV6_RET=0
-		fi
-	fi
 	if [ $IPV6_ISENABLE -eq 0 ]; then
 		if [ $IPV4_RET -eq 1 -o $IPV6_RET -eq 1 ]; then
 			crit "Iptables/ip6tables is not set rules of protect DOS attacks!"
